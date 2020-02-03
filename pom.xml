@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.student</groupId>
+  <artifactId>party</artifactId>
+  <packaging>jar</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>party Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <!-- 共享源 -->
+	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.RELEASE</version>
+        <relativePath/>
+    </parent>
+  <dependencies>
+     <!-- spring boot 核心依賴 共享無需指定版本 -->
+  		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+    </exclusions>
+        </dependency>
+        <dependency>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-starter-test</artifactId>
+			    <scope>test</scope>
+		</dependency>
+        <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
+   <!-- swagger 数据接口文档生成依赖 -->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>2.6.1</version>
+    </dependency>
+	<!-- swagger 数据接口ui界面依赖包 -->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>2.6.1</version>
+    </dependency>
+    <!-- mysql驱动包 -->
+    <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+    </dependency>
+    <!-- mybatis 数据库jar -->
+    <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.0</version>
+    </dependency>
+    <!-- easypoi jar包  excel、word操作类 -->
+     <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-base</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-web</artifactId>
+            <version>3.0.3</version> </dependency>
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-annotation</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+        <!-- quartz定时任务调度jar -->
+        <dependency> 
+		  <groupId>org.quartz-scheduler</groupId> 
+		  <artifactId>quartz</artifactId> 
+		  <version>2.2.1</version> 
+		</dependency>
+           <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency> 
+        <!-- mail邮件依赖jar -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+    <!-- json 序列化包 -->
+    <dependency>  
+    <groupId>com.alibaba</groupId>  
+    <artifactId>fastjson</artifactId>  
+    <version>1.2.41</version>  
+</dependency> 
+  <!-- redis服务包 -->
+  <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-redis</artifactId>
+</dependency>
+<!--jwt token管理工具jar  -->
+<dependency>
+		      <groupId>com.auth0</groupId>
+		      <artifactId>java-jwt</artifactId>
+		      <version>3.4.0</version>
+		</dependency>
+
+  </dependencies>
+  <build>
+    <finalName>party</finalName>
+     <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.2.RELEASE</version>
+            </plugin>
+        </plugins>
+            <resources>
+            <resource>
+              <directory>src/main/java</directory>
+             <includes>
+                <include>**/*.xml</include>
+              </includes>
+                </resource>
+            <resource>
+           <directory>${project.basedir}/src/main/resources</directory>
+                 </resource>
+             </resources>
+  </build>
+</project>
