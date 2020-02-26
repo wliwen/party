@@ -12,7 +12,7 @@ public class TokenUtils {
 		
 		public String getToken(SystemUsersEntity user) {
 			String token="";
-			token=JWT.create().withAudience(user.getID()).sign(Algorithm.HMAC256(user.getUserName()+user.getUserPassword()));
+			token=JWT.create().withAudience(user.getUser_id()).sign(Algorithm.HMAC256(user.getUser_id()+user.getUser_password()));
 			return token;
 		}
 }

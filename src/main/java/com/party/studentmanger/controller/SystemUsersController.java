@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(description = "用户接口")
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/party")
 public class SystemUsersController {
 	@Autowired
 	private SystemUserService service;

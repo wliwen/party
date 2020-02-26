@@ -64,7 +64,7 @@ public class TokenFilterHandle implements HandlerInterceptor {
 	                    throw new RuntimeException("用户不存在，请重新登录");
 	                }
 	                // 解密验证token是否合法
-	                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getUserName()+user.getUserPassword())).build();
+	                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getUser_id()+user.getUser_password())).build();
 	                try {
 	                    jwtVerifier.verify(token);
 	                    System.out.println("token合法"); 
@@ -72,7 +72,7 @@ public class TokenFilterHandle implements HandlerInterceptor {
 	                    throw new RuntimeException("401");
 	                }
 	                //验证token是否过期
-	                if(utils.get(user.getUserName()+user.getUserPassword())!=null) {
+	                if(utils.get(user.getUser_id()+user.getUser_password())!=null) {
 	                	System.out.println("未过期");
 	                }else {
 	                	throw new RuntimeException("已过期或非法token");

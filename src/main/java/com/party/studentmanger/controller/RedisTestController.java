@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(description = "Redis接口")
 @RestController
-@RequestMapping("/redis")
+@RequestMapping("/party")
 public class RedisTestController {
 	@Autowired
 	private RedisUtils util;

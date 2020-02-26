@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.party.studentmanger.entity.SystemUsersEntity;
+import com.party.studentmanger.mapper.SystemUsersMapper;
 import com.party.studentmanger.utils.RedisUtils;
 import com.party.studentmanger.utils.TokenUtils;
 
@@ -15,36 +16,38 @@ public class SystemUserService {
 	private TokenUtils util;
 	@Autowired
 	RedisUtils rutils;
-	public SystemUsersEntity  getUserByID(String userID) {
-		return new SystemUsersEntity("123456", "李四", "123456789", "123");
-	}
 	
-	public SystemUsersEntity  getUserByName(String userName) {
-		return new SystemUsersEntity("123456", "李四", "123456789", "123");
-	}
-
+	private SystemUsersEntity entity=new SystemUsersEntity();
+	@Autowired
+	SystemUsersMapper mapper;
 	public HashMap<String, Object> loginSystem(HashMap<String, String> map) {
+		
 		HashMap<String, Object>  result=new HashMap<String, Object>();
-		int index=0;
+		
 		//验证
-		SystemUsersEntity user=this.getUserByName(map.get("userName"));
-		if(user==null) {
-			result.put("msg"+index, "用户不存在！");
-			index++;
-		}else if(!user.getUserPassword().equals(map.get("userPassword"))) {
-			result.put("msg"+index, "密码错误！");
-			index++;
+		entity=mapper.loginSystem(map);
+		if(entity==null) {
+			result.put("msg", "用户不存在！");
+			
+			return result;
+		}else if(!entity.getUser_password().equals(map.get("user_password"))) {
+			result.put("msg", "密码错误！");
+			return result;
 		}else {
-			String token =util.getToken(user);
-			String key=user.getUserName()+user.getUserPassword();
+			String token =util.getToken(entity);
+			String key=entity.getUser_name()+entity.getUser_password();
 			rutils.set(key, token,7200);
 			//将生成token存入redis
 			result.put("token", token);
-			result.put("user",user);
+			result.put("user",entity);
 		}
 		return result;
 	}
 
+	public SystemUsersEntity getUserByID(String userid) {
+		return mapper.getUserByID(userid);
+	}
+	
 	public HashMap<String, Object> updateSystem(HashMap<String, String> map) {
 		
 		return null;
