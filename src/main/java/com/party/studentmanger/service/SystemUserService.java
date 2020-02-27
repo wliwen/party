@@ -1,6 +1,7 @@
 package com.party.studentmanger.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,8 +49,9 @@ public class SystemUserService {
 		return mapper.getUserByID(userid);
 	}
 	
-	public HashMap<String, Object> updateSystem(HashMap<String, String> map) {
-		
-		return null;
+	
+
+	public List<HashMap<String, Object>> getMenu(HashMap<String, String> map) {
+		return  mapper.getMenu(map);
 	}
 }

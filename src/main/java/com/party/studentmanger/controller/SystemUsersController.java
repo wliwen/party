@@ -1,6 +1,7 @@
 package com.party.studentmanger.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,11 +27,11 @@ public class SystemUsersController {
 		return service.loginSystem(map);
 	}
 	
-	@ApiOperation(value = "修改密码", notes = "修改密码")
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	@MustToken
-	public HashMap<String,Object> updateSystem(@RequestBody HashMap<String,String> map) {
-		return service.updateSystem(map);
+	
+	@ApiOperation(value = "拉取菜单", notes = "拉取菜单")
+	@RequestMapping(value = "/getmenu", method = RequestMethod.POST)
+	public List<HashMap<String,Object>> getMenu(@RequestBody HashMap<String,String> map) {
+		return service.getMenu(map);
 	}
 	
 }

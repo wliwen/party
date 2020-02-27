@@ -8,5 +8,10 @@
     <select id="getUserByID" parameterType="java.lang.String" resultType="com.party.studentmanger.entity.SystemUsersEntity">
         select * from t_user where user_id = #{user_id}
     </select>
-    
+     <select id="getMenu" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+       select * from t_menu where 1=1 
+       <if test="power!=0">
+       	and level=#{power}
+       </if>
+    </select>
 </mapper>
