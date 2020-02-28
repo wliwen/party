@@ -37,7 +37,7 @@ public class SystemUserService {
 		}else {
 			String token =util.getToken(entity);
 			String key=entity.getUser_name()+entity.getUser_password();
-			rutils.set(key, token,7200);
+			rutils.set(key, token,60);
 			//将生成token存入redis
 			result.put("token", token);
 			result.put("user",entity);

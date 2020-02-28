@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.party.studentmanger.elementtype.MustToken;
 import com.party.studentmanger.utils.RedisUtils;
 
 import io.swagger.annotations.Api;
@@ -20,8 +21,8 @@ public class RedisTestController {
 	private RedisUtils util;
 	@ApiOperation(value = "Redis接口存", notes = "Redis接口存")
 	@RequestMapping(value = "/setKV", method = RequestMethod.POST)
+	@MustToken
 	public boolean setKV(@RequestBody HashMap<String,Object> param){
-		
 		return util.set("key_01", param, 120);
 	}
 	
