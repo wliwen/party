@@ -1,5 +1,7 @@
 package com.party.studentmanger.base;
 
+import java.util.LinkedList;
+
 import javax.servlet.MultipartConfigElement;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -36,5 +38,6 @@ public class PartyApplication {
         /// 总上传数据大小
         factory.setMaxRequestSize("5120KB");
         return factory.createMultipartConfig();
+   
     }
 }
