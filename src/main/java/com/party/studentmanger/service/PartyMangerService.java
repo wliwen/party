@@ -9,12 +9,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.party.studentmanger.mapper.TeacherMangerMapper;
+import com.party.studentmanger.mapper.PartyMangerMapper;
+
 @Service
-public class TeacherMangerService {
+public class PartyMangerService {
 	@Autowired
-	private TeacherMangerMapper mapper;
-	public List<HashMap<String, Object>> getTeacherList(HashMap<String, Object> param) {
+	private PartyMangerMapper mapper;
+	public List<HashMap<String, Object>> getPartyList(HashMap<String, Object> param) {
 		List list=new ArrayList<HashMap<String, Object>>();
 		//开使处理分页
 		//获取总数
@@ -31,40 +32,35 @@ public class TeacherMangerService {
 		return list;
 	}
 
-	public Boolean addTeacherList(HashMap<String, Object> map) {
-		map.put("user_password", "123456");
+	public Boolean addPartyList(HashMap<String, Object> map) {
 		map.put("create_date",new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString());
-		 if(mapper.addTeacherList(map) != null) {
+		 if(mapper.addPartyList(map) != null) {
 			 return true;
 		 }else {
 			 return false;
 		 }
 	}
 
-	public Boolean updateTeacherList(HashMap<String, Object> map) {
-		 if(mapper.updateTeacherList(map) != null) {
+	public Boolean updatePartyList(HashMap<String, Object> map) {
+		 if(mapper.updatePartyList(map) != null) {
 			 return true;
 		 }else {
 			 return false;
 		 }
 	}
 
-	public List<HashMap<String, Object>> delTeacherList(HashMap<String, Object> map) {
+	public List<HashMap<String, Object>> delPartyList(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<HashMap<String, Object>> expTeacherList(HashMap<String, Object> map) {
+	public List<HashMap<String, Object>> expPartyList(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public Boolean checkID(String ID) {
-		if(mapper.checkID(ID).size()<=0) {
-			return false;
-		}else {
-			return true;
-		}
+//stu@2020@number
+	public String getAutoId() {
+		String id= "stu@"+System.currentTimeMillis();
+		return id;
 	}
-
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.party.studentmanger.elementtype.MustToken;
@@ -32,14 +33,14 @@ public class TeacherMangerController {
 	@ApiOperation(value = "老师管理新增", notes = "老师管理新增")
 	@RequestMapping(value = "/addteacherlist", method = RequestMethod.POST)
 	@MustToken
-	public List<HashMap<String,Object>> addTeacherList(@RequestBody HashMap<String,Object> map) {
+	public Boolean addTeacherList(@RequestBody HashMap<String,Object> map) {
 		return service.addTeacherList(map);
 	}
 	
 	@ApiOperation(value = "老师管理修改", notes = "老师管理修改")
 	@RequestMapping(value = "/updateteacherlist", method = RequestMethod.POST)
 	@MustToken
-	public List<HashMap<String,Object>> updateTeacherList(@RequestBody HashMap<String,Object> map) {
+	public Boolean updateTeacherList(@RequestBody HashMap<String,Object> map) {
 		return service.updateTeacherList(map);
 	}
 	
@@ -55,6 +56,11 @@ public class TeacherMangerController {
 	public List<HashMap<String,Object>> expTeacherList(@RequestBody HashMap<String,Object> map) {
 		return service.expTeacherList(map);
 	}
-	
+	@ApiOperation(value = "检测工号是否存在", notes = "检测工号是否存在")
+	@RequestMapping(value = "/checkID", method = RequestMethod.GET)
+	@MustToken
+	public Boolean checkID(@RequestParam(value ="user_id", required = false) String ID) {
+		return service.checkID(ID);
+	}
 
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.party.studentmanger.mapper.HomeMapper">
+    <select id="getNearUser"  resultType="java.util.HashMap">
+select user_name,if (correction_date &lt;in_date,"正式党员","预备党员") as party_type   from t_party_user order by create_date desc limit 0,5
+    </select>
+    
+</mapper>

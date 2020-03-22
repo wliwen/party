@@ -8,12 +8,24 @@
     <select id="getList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         select *,(case user_sex when '0' then '男' when '1' then '女' end ) as sex ,(case is_used when '1' then '正常' when '2' then '作废' end) as used  from t_user where 1=1
         <if test="name!=null and name!='' ">
-        and user_name like #{name}
+        and user_name like "%"#{name}"%"
         </if>
         <if test="number_no!=null and number_no!='' ">
-        and user_id like #{number_no}
+        and user_id like "%"#{number_no}"%"
         </if>
-        order by user_id  limit #{start_num},#{end_num} 
+        order by create_date desc  limit #{start_num},#{end_num} 
     </select>
     
+    <insert id="addTeacherList" parameterType="java.util.HashMap">
+    insert into t_user (user_id,user_name,user_password,email,phone_num,user_age,user_sex,user_identity,create_date)
+    values(#{user_id},#{user_name},#{user_password},#{email},#{phone_num},#{user_age},#{user_sex},#{user_identity},#{create_date})
+    </insert>
+    <select id="checkID" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select * from t_user where user_id=#{ID}
+    </select>
+    <update id="updateTeacherList" parameterType="java.util.HashMap">
+    update t_user set (user_name,email,phone_num,user_age,user_sex,user_identity) 
+    values(#{user_name},#{email},#{phone_num},#{user_age},#{user_sex},#{user_identity})
+   	where user_id=#{user_id}
+    </update>
 </mapper>
