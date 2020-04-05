@@ -42,7 +42,12 @@ public class PartyMangerController {
 	public Boolean updatepartyList(@RequestBody HashMap<String,Object> map) {
 		return service.updatePartyList(map);
 	}
-	
+	@ApiOperation(value = "学生管理删除", notes = "学生管理删除")
+	@RequestMapping(value = "/delpartyList", method = RequestMethod.POST)
+	@MustToken
+	public Boolean delpartyList(@RequestBody HashMap<String,Object> map) {
+		return service.delpartyList(map);
+	}
 	@ApiOperation(value = "学生管理导出", notes = "学生管理导出")
 	@RequestMapping(value = "/exppartylist", method = RequestMethod.POST)
 	@MustToken

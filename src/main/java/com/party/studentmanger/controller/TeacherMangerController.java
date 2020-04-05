@@ -47,7 +47,7 @@ public class TeacherMangerController {
 	@ApiOperation(value = "老师管理删除", notes = "老师管理删除")
 	@RequestMapping(value = "/delteacherlist", method = RequestMethod.POST)
 	@MustToken
-	public List<HashMap<String,Object>> delTeacherList(@RequestBody HashMap<String,Object> map) {
+	public Boolean delTeacherList(@RequestBody HashMap<String,Object> map) {
 		return service.delTeacherList(map);
 	}
 	@ApiOperation(value = "老师管理导出", notes = "老师管理导出")

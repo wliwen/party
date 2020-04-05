@@ -28,4 +28,10 @@ public class PayMangerController {
 	public List<HashMap<String,Object>> getPayList(@RequestBody HashMap<String,Object> map) {
 		return service.getPayList(map);
 	}
+	@ApiOperation(value = "缴费存入", notes = "缴费存入")
+	@RequestMapping(value = "/addpay", method = RequestMethod.POST)
+	@MustToken
+	public Boolean addPay(@RequestBody HashMap<String,Object> map) {
+		return service.addPay(map);
+	}
 }

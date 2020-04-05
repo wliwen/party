@@ -24,8 +24,10 @@
         select * from t_user where user_id=#{ID}
     </select>
     <update id="updateTeacherList" parameterType="java.util.HashMap">
-    update t_user set (user_name,email,phone_num,user_age,user_sex,user_identity) 
-    values(#{user_name},#{email},#{phone_num},#{user_age},#{user_sex},#{user_identity})
+    update t_user set user_name=#{user_name},email=#{email},phone_num=#{phone_num},user_age=#{user_age},user_sex=#{user_sex},user_identity=#{user_identity} 
    	where user_id=#{user_id}
     </update>
+    <delete id="delTeacherList">
+    delete from t_user where user_id=#{user_id}
+    </delete>
 </mapper>

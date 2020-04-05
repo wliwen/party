@@ -7,4 +7,6 @@ public interface PayMangerMapper {
 
 	List<HashMap<String, Object>> getPayList(HashMap<String,Object> map);
 
+	Integer addPay(HashMap<String, Object> map);
+
 }

@@ -49,9 +49,12 @@ public class TeacherMangerService {
 		 }
 	}
 
-	public List<HashMap<String, Object>> delTeacherList(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean delTeacherList(HashMap<String, Object> map) {
+		if(mapper.delTeacherList(map) != null) {
+			 return true;
+		 }else {
+			 return false;
+		 }
 	}
 
 	public List<HashMap<String, Object>> expTeacherList(HashMap<String, Object> map) {

@@ -5,5 +5,9 @@
     <select id="getPayList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
         select * from party_pay where t_party_user_id=#{t_user_id}
     </select>
+   <update id="addPay" parameterType="java.util.HashMap">
+   		update party_pay set one=#{one},two=#{two},three=#{three},four=#{four},five=#{five},six=#{six},seven=#{seven},eight=#{eight},nine=#{nine},twen=#{twen},ele=#{ele},twof=#{twof} where t_party_user_id=#{t_party_user_id}
+   </update>
+   
    
 </mapper>

@@ -14,5 +14,12 @@ private PayMangerMapper mapper;
 	public List<HashMap<String, Object>> getPayList(HashMap<String,Object> map) {
 		return mapper.getPayList(map);
 	}
+	public Boolean addPay(HashMap<String, Object> map) {
+		if(mapper.addPay(map) != null) {
+			 return true;
+		 }else {
+			 return false;
+		 }
+	}
 
 }

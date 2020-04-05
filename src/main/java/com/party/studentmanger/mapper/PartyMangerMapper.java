@@ -14,5 +14,7 @@ public interface PartyMangerMapper {
 
 	Integer updatePartyList(HashMap<String, Object> map);
 
+	Integer delpartyList(HashMap<String, Object> map);
+
 //	String getAutoId();
 }

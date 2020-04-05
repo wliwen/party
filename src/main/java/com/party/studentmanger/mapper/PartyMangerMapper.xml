@@ -24,8 +24,12 @@
         select * from t_party_user where user_id=#{ID}
     </select>
     <update id="updatePartyList" parameterType="java.util.HashMap">
-    update t_party_user set (user_name,in_party_dept,navite_place,education) 
-    values(#{user_name},#{in_party_dept},#{navite_place},#{education})
+    update t_party_user set user_name=#{user_name},in_party_dept=#{in_party_dept},navite_place=#{navite_place},education=#{education} 
    	where t_user_id=#{t_user_id}
     </update>
+    <delete id="delpartyList">
+    delete from t_party_user where t_user_id=#{t_user_id}
+    </delete>
+    
+    
 </mapper>

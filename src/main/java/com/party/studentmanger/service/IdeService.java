@@ -9,13 +9,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.party.studentmanger.mapper.PartyMangerMapper;
+import com.party.studentmanger.mapper.ActivityMapper;
+import com.party.studentmanger.mapper.IdeMapper;
 
 @Service
-public class PartyMangerService {
+public class IdeService {
 	@Autowired
-	private PartyMangerMapper mapper;
-	public List<HashMap<String, Object>> getPartyList(HashMap<String, Object> param) {
+	private IdeMapper mapper;
+	public List<HashMap<String, Object>> getTeacherList(HashMap<String, Object> param) {
 		List list=new ArrayList<HashMap<String, Object>>();
 		//开使处理分页
 		//获取总数
@@ -32,43 +33,30 @@ public class PartyMangerService {
 		return list;
 	}
 
-	public Boolean addPartyList(HashMap<String, Object> map) {
+	public Boolean addTeacherList(HashMap<String, Object> map) {
+		map.put("user_password", "123456");
 		map.put("create_date",new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString());
-		 if(mapper.addPartyList(map) != null) {
+		 if(mapper.addTeacherList(map) != null) {
 			 return true;
 		 }else {
 			 return false;
 		 }
 	}
 
-	public Boolean updatePartyList(HashMap<String, Object> map) {
-		 if(mapper.updatePartyList(map) != null) {
+	public Boolean updateTeacherList(HashMap<String, Object> map) {
+		 if(mapper.updateTeacherList(map) != null) {
 			 return true;
 		 }else {
 			 return false;
 		 }
 	}
 
-	public List<HashMap<String, Object>> delPartyList(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<HashMap<String, Object>> expPartyList(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-//stu@2020@number
-	public String getAutoId() {
-		String id= "stu@"+System.currentTimeMillis();
-		return id;
-	}
-
-	public Boolean delpartyList(HashMap<String, Object> map) {
-		if(mapper.delpartyList(map) != null) {
+	public Boolean delTeacherList(HashMap<String, Object> map) {
+		if(mapper.deliList(map) != null) {
 			 return true;
 		 }else {
 			 return false;
 		 }
 	}
+
 }

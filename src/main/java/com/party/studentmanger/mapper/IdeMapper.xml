@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.party.studentmanger.mapper.IdeMapper">
+    <select id="getTotal" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        select count(1) from ide where 1=1
+    </select>
+    <select id="getList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select * from ide where 1=1
+        <if test="name!=null and name!='' ">
+        and title like "%"#{title}"%"
+        </if>
+        <if test="number_no!=null and number_no!='' ">
+        and id like "%"#{id}"%"
+        </if>
+        order by idetime desc  limit #{start_num},#{end_num} 
+    </select>
+    
+    <insert id="addTeacherList" parameterType="java.util.HashMap">
+    insert into ide (id,title,num,content,discrt,idetime)
+    values(#{id},#{title},#{member},#{content},#{discrt},#{idetime})
+    </insert>
+    <update id="updateTeacherList" parameterType="java.util.HashMap">
+    update ide set id=#{id},title=#{title},num=#{num},content=#{content},discrt=#{discrt},idetime=#{idetime}
+   	where id=#{id}
+    </update>
+    
+    <delete id="deliList">
+    
+    delete from ide where ide_id=#{ide_id}
+    </delete>
+</mapper>
